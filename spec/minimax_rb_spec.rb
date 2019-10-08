@@ -44,8 +44,8 @@ RSpec.describe MinimaxRB do
     empty_marker = "-"
     args = {
       board: board,
-      marker: maximizing_marker,
-      opponent: opponent,
+      curr_player_marker: maximizing_marker,
+      opponent_marker: opponent,
       empty_marker: empty_marker
     }
 
@@ -58,8 +58,8 @@ RSpec.describe MinimaxRB do
     opponent = "O"
     args = {
       board: board,
-      marker: maximizing_marker,
-      opponent: opponent
+      curr_player_marker: maximizing_marker,
+      opponent_marker: opponent
     }
 
     expect(MinimaxRB.best_move(args)).to eq 5
@@ -71,8 +71,8 @@ RSpec.describe MinimaxRB do
     opponent = "O"
     args = {
       board: board,
-      marker: maximizing_marker,
-      opponent: opponent
+      curr_player_marker: maximizing_marker,
+      opponent_marker: opponent
     }
 
     expect(MinimaxRB.best_move(args)).to eq 6
@@ -84,8 +84,8 @@ RSpec.describe MinimaxRB do
     opponent = "O"
     args = {
       board: board,
-      marker: maximizing_marker,
-      opponent: opponent
+      curr_player_marker: maximizing_marker,
+      opponent_marker: opponent
     }
     expect(MinimaxRB.best_move(args)).to eq 6
   end
