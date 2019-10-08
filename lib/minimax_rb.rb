@@ -1,6 +1,6 @@
 module MinimaxRB
   def self.best_move args
-    minimax(args[:board], args[:marker], args[:opponent], args.fetch(:empty_marker, nil))
+    minimax(args[:board], args[:curr_player_marker], args[:opponent_marker], args.fetch(:empty_marker, nil))
   end
 
   private
