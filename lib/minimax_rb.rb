@@ -1,5 +1,9 @@
 module MinimaxRB
+  ARGUMENT_MISSING_MESSAGE = "One or more missing arguments!"
+  EXPECTED_ARGUMENTS = [:board, :curr_player_marker, :opponent_marker]
+
   def self.best_move args
+    raise ArgumentError, ARGUMENT_MISSING_MESSAGE unless all_args_included?(args)
     minimax(args[:board], args[:curr_player_marker], args[:opponent_marker], args.fetch(:empty_marker, nil))
   end
 
@@ -25,10 +29,10 @@ module MinimaxRB
     best_score.max_by { |key, value| value }[1]
   end
 
-  def self.available_moves array, empty_marker
+  def self.available_moves board, empty_marker
     available_moves = []
-    array.each_with_index do |value, index|
-      if value == empty_marker
+    board.each_with_index do |cell_value, index|
+      if cell_value == empty_marker
         available_moves << index
       end
     end
@@ -79,5 +83,9 @@ module MinimaxRB
 
   def self.board_full? board, empty_marker
     not board.include?(empty_marker)
+  end
+
+  def self.all_args_included? args
+    (EXPECTED_ARGUMENTS - args.keys).empty?
   end
 end
