@@ -1,7 +1,7 @@
 require 'minimax_rb'
 
 RSpec.describe MinimaxRB do
-  context "tic-tac-toe board" do
+  describe "tic-tac-toe board" do
     it "returns available moves" do
       array = ["X", "-", "-", "-"]
       empty_marker = "-"
@@ -51,7 +51,7 @@ RSpec.describe MinimaxRB do
     end
   end
 
-  context "game rules" do
+  describe "game rules" do
     it "checks if a winning combo contains a specific marker, returns true" do
       marker_o = "O"
       o_winning_combo = ["O", "O", "O"]
@@ -114,7 +114,7 @@ RSpec.describe MinimaxRB do
     end
   end
 
-  context "best move" do
+  describe "best move" do
     it "blocks the human player winning combo" do
       board = ["X", nil, nil, "O", "O", nil, nil, nil, "X"]
       maximizing_marker = "X"
@@ -177,8 +177,6 @@ RSpec.describe MinimaxRB do
       expect(MinimaxRB.best_move(args)).to eq 6
     end
 
-
-
     it "with the highest score/move pair, returns the move" do
       expect(MinimaxRB.max_move({5 => 1})).to eq 5
     end
@@ -192,26 +190,7 @@ RSpec.describe MinimaxRB do
         board: "board",
         opponent_marker: "O"
       }
-      expect { MinimaxRB.best_move(args) }.to raise_error(ArgumentError, "One or more missing arguments!")
-    end
-  end
-
-  context "error handling" do
-    it "returns true if all of the arguments are included" do
-      args = {
-        board: "board",
-        curr_player_marker: "X",
-        opponent_marker: "O"
-      }
-      expect(MinimaxRB.all_args_included?(args)).to eq true
-    end
-
-    it "returns false if one or more arguments are not included" do
-      args = {
-        board: "board",
-        opponent_marker: "O"
-      }
-      expect(MinimaxRB.all_args_included?(args)).to eq false
+      expect { MinimaxRB.best_move(args) }.to raise_error(ArgumentError)
     end
   end
 end
